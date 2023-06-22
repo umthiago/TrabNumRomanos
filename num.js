@@ -1,11 +1,11 @@
 const h3 = document.querySelector("h3")
 
 
-function inicializa(){
-    const numero = document.querySelector("#num").value
-    romanoadecimal(numero.toUpperCase())
+function inicializa(){  //Aqui é criado uma função que ocorrerá um evento quando o botão for clicado
+    const numero = document.querySelector("#num").value  // se obtém o valor inserido e é atribuido a variavel
+    romanoadecimal(numero.toUpperCase())  
 }
-function romanoadecimal(numeroromano) {
+function romanoadecimal(numeroromano) { // se obtém a conversão de um número romano e converte em decimal
   const valoresromanos = {
     I: 1,
     V: 5,
@@ -19,15 +19,15 @@ function romanoadecimal(numeroromano) {
   let numerodecimal = 0;
 
   for (let i = 0; i < numeroromano.length; i++) {
-    const listaroman = valoresromanos[numeroromano[i]];
-    const proximovalorromano = valoresromanos[numeroromano[i + 1]];
+    const listaroman = valoresromanos[numeroromano[i]]; // se obtém o o valor decimal do caractere romano e atribui a variavel
+    const proximovalorromano = valoresromanos[numeroromano[i + 1]]; 
 
-    if (proximovalorromano && listaroman < proximovalorromano) {
-      numerodecimal += proximovalorromano - listaroman;
+    if (proximovalorromano && listaroman < proximovalorromano) {  // é verificado se o numero romano possui um valor decimal
+      numerodecimal += proximovalorromano - listaroman; 
     } else {
       numerodecimal += listaroman;
     }
   }
 
-  h3.innerText = `O número romano digitado, convetido para decimal é: ${numerodecimal}`
+  h3.innerText = `O número romano digitado, convetido para decimal é: ${numerodecimal}` // imprimir o resultado convertido em decimal 
 }
