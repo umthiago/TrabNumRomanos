@@ -29,5 +29,5 @@ function romanoadecimal(numeroromano) { // se obtém a conversão de um número 
     }
   }
 
-  h3.innerText = `O número romano digitado, convetido para decimal é: ${numerodecimal}` // imprimir o resultado convertido em decimal 
+  h3.innerText = `Valor Decimal é: ${numerodecimal}` // imprimir o resultado convertido em decimal 
 }
