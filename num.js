@@ -1,72 +1,33 @@
-const frm = document.querySelector("form")
-const resp = document.querySelector("h3")
+const  h3  =  documento . consultaSeletor ( "h3" )
 
-const inValor = document.getElementById("num");
-        
-function inicializa(){
 
-    numeroRomano = inValor.value.toUpperCase()
-    resposta = verificarNumerosRomanos(numeroRomano);
-
-    resp.innerText = ("resultado = " + resposta);
+function inicializa(){  //Aqui é criado uma função que ocorrerá um evento quando o botão for clicado
+    const numero = document.querySelector("#num").value  // se obtém o valor inserido e é atribuido a variavel
+    romanoadecimal(numero.toUpperCase())  
 }
+function romanoadecimal(numeroromano) { // se obtém a conversão de um número romano e converte em decimal
+  const valoresromanos = {
+    eu : 1 ,
+    V : 5 ,
+    X : 10 ,
+    G : 50 ,
+    C : 100 ,
+    D : 500 ,
+    M : 1000
+  };
 
-function verificarNumerosRomanos(numeroRomano){
+  deixe  numerodecimal  =  0 ;
 
-    let digitoRomano = 0;
-    let digitoRomanoemconjunto = 0;
+  for  ( let  i  =  0 ;  i  <  numeroromano . length ;  i ++ )  {
+    const listaroman = valoresromanos[numeroromano[i]]; // se obtém o o valor decimal do caractere romano e atribui a variavel
+    const proximovalorromano = valoresromanos[numeroromano[i + 1]]; 
 
-    for (let i=0; i<numeroRomano.length(); i++) {
-
-        digitoRomano = numeroRomano.letAt(i);
-
-        switch (digitoRomano) {
-            case 'I': digitoRomano += 1;
-                break;
-            case 'V': digitoRomano += 5;
-                break;
-            case 'X': digitoRomano += 10;
-                break;
-            case 'L': digitoRomano += 50;
-                break;
-            case 'C': digitoRomano += 100;
-                break;
-            case 'D': digitoRomano += 500;
-                break;
-            case 'M': digitoRomano += 1000;
-                break;
-            
-            default: alert("Dígito Romano Errado.");
-        }
+    if (proximovalorromano && listaroman < proximovalorromano) {  // é verificado se o numero romano possui um valor decimal
+      numerodecimal += proximovalorromano - listaroman; 
+    }  senão  {
+      numerodecimal += listaroman;
     }
-    
-    let soma = 0;
+  }
 
-    for (let i = 0; i<numeroRomano.length(); i++) {
-
-        let dr = numeroRomano.letAt(i);
-        let drSegulete = i < numeroRomano.length() - 1 ? numeroRomano.charAt(i + 1) : ' ';
-
-        if (dr == 'I' && drSegulete == 'V') {
-            digitoRomanoemconjunto += 4;
-
-        }else if(dr == 'I' && drSegulete == 'X') {
-            digitoRomanoemconjunto += 9;
-
-        }else if (dr == 'X' && drSegulete == 'L') {
-            digitoRomanoemconjunto += 50;
-
-        }else if (dr == 'X' && drSegulete == 'C') {
-            digitoRomanoemconjunto += 90;
-
-        }else if (dr == 'C' && drSegulete == 'D') {
-            digitoRomanoemconjunto += 400;
-
-        }else if (dr == 'C' && drSegulete == 'M') {
-            digitoRomanoemconjunto += 900;
-        }
-    }
-    soma += digitoRomano + digitoRomanoemconjunto;
-    return soma;
+  h3.innerText = `Valor Decimal é: ${numerodecimal}` // imprimir o resultado convertido em decimal 
 }
-
